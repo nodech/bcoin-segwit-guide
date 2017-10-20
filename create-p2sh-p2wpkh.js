@@ -23,26 +23,7 @@ ring.witness = true;
 
 console.log('P2SH/P2WPKH');
 
-// We can generate P2SH several ways.
-// We'll create it from the script
-const program = ring.getProgram();
+// In order to get P2SH we need
+let address = ring.getNestedAddress();
 
-// Now need to generate the scripthash
-// we could grab the scripthash from
-// ring and script we pass to it
-// but we can't use getScriptHash,
-// when witness is enabled, we get
-// sha256 hash.
-// const sh = ring.getScriptHash();
-
-ring.script = program;
-// This will give us P2SH for P2WPKH script
-const sh = ring.getScriptHash160();
-
-console.log('Scripthash:', sh.toString('hex'));
-
-// Now let's get address from script hash
-const address = Address.fromScripthash(sh, network);
-
-// We'll talk about redeeming it when we'll spend from it.
-console.log('Address from scripthash:', address.toString());
+console.log('Nested Address:', address.toString());

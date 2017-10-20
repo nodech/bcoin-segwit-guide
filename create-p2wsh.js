@@ -12,7 +12,8 @@ const [ring, ring2] = ringUtils.getRings(2, network);
 ring.witness = true;
 ring2.witness = true;
 
-console.log('P2WSH');
+// Using KeyRing
+console.log('\nP2WSH addresses');
 
 // Now we can create p2wsh script
 // You'll notice that, this is similar to
@@ -35,4 +36,3 @@ const addrRes = bech32.decode(address.toString());
 assert(addrRes.hash.equals(multisigScript.sha256()));
 
 // We'll leave out script, fromProgram because they are the same
-// as p2wpkh

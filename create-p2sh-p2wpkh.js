@@ -10,10 +10,9 @@ const Address = bcoin.address;
 
 const network = 'regtest';
 
-const [ring, ring2] = ringUtils.getRings(2, network);
+const [ring] = ringUtils.getRings(1, network);
 
 ring.witness = true;
-ring2.witness = true;
 
 // P2SH/P2WPKH
 // We can put P2WPKH script in P2SH too,

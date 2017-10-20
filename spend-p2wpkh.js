@@ -10,7 +10,7 @@ const Script = bcoin.script;
 
 const network = 'regtest';
 
-const [ring] = ringUtils.getRings(2, network);
+const [ring] = ringUtils.getRings(1, network);
 ring.witness = true;
 
 const address = ring.getAddress();

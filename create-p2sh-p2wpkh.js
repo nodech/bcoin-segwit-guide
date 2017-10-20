@@ -1,8 +1,6 @@
 'use strict';
 
 const ringUtils = require('./utils/keys');
-const bcoin = require('bcoin');
-const Address = bcoin.address;
 
 // Network is important when creating addresses
 // and storing private keys, You don't want to accidentally spend
@@ -24,6 +22,6 @@ ring.witness = true;
 console.log('P2SH/P2WPKH');
 
 // In order to get P2SH we need
-let address = ring.getNestedAddress();
+const address = ring.getNestedAddress();
 
 console.log('Nested Address:', address.toString());

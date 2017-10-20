@@ -36,19 +36,11 @@ const txinfo = {
   hash: 'a12738af61f01c94ff3eba949da5bd23edb67ef45c65b6445c988421eb9c3a37',
   index: 0,
 
-  value: Amount.fromBTC('20').toValue()
+  value: Amount.fromBTC('20').toValue(),
+  script: script
 };
 
-const coin = Coin.fromJSON({
-  version: 1,
-  height: -1,
-  value: txinfo.value,
-  coinbase: false,
-
-  script: script.toJSON(),
-  hash: txinfo.hash,
-  index: txinfo.index
-});
+const coin = Coin.fromOptions(txinfo);
 
 (async () => {
   // Now let's spend our tx

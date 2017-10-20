@@ -13,7 +13,7 @@ ring.witness = true;
 ring2.witness = true;
 
 // Using KeyRing
-console.log('\nP2WSH addresses');
+console.log('P2WSH addresses');
 
 // Now we can create p2wsh script
 // You'll notice that, this is similar to
@@ -21,9 +21,8 @@ console.log('\nP2WSH addresses');
 const pubkeys = [ring.publicKey, ring2.publicKey];
 const multisigScript = Script.fromMultisig(1, 2, pubkeys);
 
-// Let's give the rings the script to hash it.
+// Let's give the ring the script to hash it.
 ring.script = multisigScript;
-ring2.script = multisigScript;
 
 // Now when we request address it should get generated
 const address = ring.getAddress();

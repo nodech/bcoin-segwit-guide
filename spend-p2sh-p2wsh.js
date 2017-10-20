@@ -21,19 +21,19 @@ const redeemScript = Script.fromMultisig(1, 2, pubkeys);
 // let's grab the address
 ring.script = redeemScript;
 
-const address = ring.getAddress();
+const receivingAddress = ring.getNestedAddress();
 
-console.log('Address for p2wsh:', address.toString());
+console.log('Address for p2sh-p2wsh:', receivingAddress.toString());
 
 // reset script and cache states
 ring.script = null;
 ring.refresh();
 
-const script = Script.fromAddress(address);
+const script = Script.fromAddress(receivingAddress);
 
 const sendTo = 'RTJCrETrS6m1otqXRRxkGCReRpbGzabDRi';
-const txhash = revHex('a12738af61f01c94ff3eba949da5bd23edb67ef4'
-                  + '5c65b6445c988421eb9c3a37');
+const txhash = revHex('376ed4ddf59e89af352b304b9f6255dd9fa04e59'
+                    + 'bf75cabeb4ed5d6783573a6a');
 const txinfo = {
   // prevout
   hash: txhash,
@@ -57,7 +57,7 @@ const coin = Coin.fromOptions(txinfo);
   });
 
   await spend1.fund([coin], {
-    changeAddress: address,
+    changeAddress: receivingAddress,
     rate: 10000
   });
 
@@ -83,7 +83,7 @@ const coin = Coin.fromOptions(txinfo);
   spend2.signInput(0, coin, ring2);
 
   assert(spend2.verify(), 'Transaction isn\'t valid');
-  
+
   // Now we can broadcast it
   console.log(spend2.toRaw().toString('hex'));
 })().catch((e) => {

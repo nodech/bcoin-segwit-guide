@@ -7,6 +7,7 @@ const Amount = bcoin.amount;
 const Coin = bcoin.coin;
 const MTX = bcoin.mtx;
 const Script = bcoin.script;
+const revHex = bcoin.util.revHex;
 
 const network = 'regtest';
 
@@ -18,9 +19,11 @@ const address = ring.getAddress();
 console.log(`Address where we received money: ${address}`);
 
 const sendTo = 'RTJCrETrS6m1otqXRRxkGCReRpbGzabDRi';
+const txhash = revHex('88885ac82ab0b61e909755e7f64f2deeedb89c83'
+                    + '3b68242da7de98c0934e1143');
 const txinfo = {
   // prevout
-  hash: '88885ac82ab0b61e909755e7f64f2deeedb89c833b68242da7de98c0934e1143',
+  hash: txhash,
   index: 1,
 
   value: Amount.fromBTC('200').toValue(),

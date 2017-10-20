@@ -7,7 +7,7 @@ const Amount = bcoin.amount;
 const Coin = bcoin.coin;
 const MTX = bcoin.mtx;
 const Script = bcoin.script;
-const Address = bcoin.address;
+const revHex = bcoin.util.revHex;
 
 const network = 'regtest';
 
@@ -19,9 +19,11 @@ const address = ring.getNestedAddress();
 console.log(`Address: ${address}`);
 
 const sendTo = 'RTJCrETrS6m1otqXRRxkGCReRpbGzabDRi';
+const txhash = revHex('36c36ffa8f192a424d0a8e3ba5fde0e7764a5a2f'
+                    +' 146db32854a5d71b18218cfa');
 const txinfo = {
   // prevout
-  hash: '36c36ffa8f192a424d0a8e3ba5fde0e7764a5a2f146db32854a5d71b18218cfa',
+  hash: txhash,
   index: 0,
 
   value: Amount.fromBTC('20').toValue(),
@@ -39,7 +41,7 @@ const coin = Coin.fromOptions(txinfo);
   await spend.fund([coin], {
     rate: 10000,
     changeAddress: address
-  }).then()
+  });
 
   spend.sign(ring);
 

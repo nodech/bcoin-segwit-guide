@@ -45,7 +45,7 @@ const coin = Coin.fromOptions(txinfo);
   await spend.fund([coin], {
     rate: 10000,
     changeAddress: address
-  }).then()
+  });
 
   spend.sign(ring);
 

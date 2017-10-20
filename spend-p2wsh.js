@@ -83,7 +83,7 @@ const coin = Coin.fromOptions(txinfo);
   spend2.signInput(0, coin, ring2);
 
   assert(spend2.verify(), 'Transaction isn\'t valid');
-  
+
   // Now we can broadcast it
   console.log(spend2.toRaw().toString('hex'));
 })().catch((e) => {
